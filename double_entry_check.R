@@ -78,5 +78,5 @@ changes_by_col <- function(data1, data2){
   }
 }
 
-# if we don't want the build-in errors, we can just call the function using the try() with the argument silent = TRUE
+# if we don't want the build-in errors, we can just call the function using the try() with the argument silent = TRUE.
 try(changes_by_col(df1,df2),silent=TRUE)
