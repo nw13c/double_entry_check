@@ -37,41 +37,47 @@ changes_by_col <- function(data1, data2){
     }
     cat("The variable(s)",paste0(counter_2,sep = ","),"is (are) not in data2.","\n")
     cat("Warning: The datasets have different number of columns.",'\n')
-    break
     #stop("Warning: The datasets have different number of columns.", call. = FALSE)
   }
   else {
     print("The data sets have the same number of columns.")
   }
+  #if(length(names(data1))!= length(names(data2))){
+    #cat("Data1 has", paste0(length(names(data1))),"columns.",'\n')
+    #cat("Data2 has", paste0(length(names(data2))),"columns.",'\n')
+    #stop("Warning: The datasets have different columns.")
+  #}
  if (!identical(names(data1),names(data2))){
-   a <- names(data1)!= names(data2)
+   #a <- names(data1)!= names(data2)
    #cat(paste0("The name in data1 is: " , names(data1[a]),sep="\n",
               #"The name in data2 is: " , names(data2[a]),sep="\n"))
-   cat("The name(s)in data1 is/are:", paste0(names(data1[a])),'\n')
-   cat("The name(s)in data2 is/are:", paste0(names(data2[a])),'\n')
+   cat("The name(s)in data1 is/are:", paste0(names(data1)),'\n')
+   cat("The name(s)in data2 is/are:", paste0(names(data2)),'\n')
    cat("Warning: The datasets have different column names.","\n")
    #stop("Warning: The datasets have different column names.")
-   break
  }
  else {
     print("The data sets have the same column names.")
   }
- if (nrow(data1)!= nrow(data2)){
+ if (!identical(nrow(data1),nrow(data2))){
   cat("Data1 has", paste0(nrow(data1)),"obs.",'\n')
   cat("Data2 has", paste0(nrow(data2)),"obs.",'\n')
   cat("Warning: The datasets have different number of observations.")
-  break
   #stop("Warning: The datasets have different number of observations.")
  }
  else {
    print("The data sets have the same number of observations.")
   }
- if(is.factor(data1)){
+
+ if(!identical(nrow(df1),nrow(df2))|!identical(names(df1),names(df2))
+    |!identical(ncol(df1),ncol(df2))){
+     return(NULL)
     as.character(data1) != as.character(data2)
-  }else{
-    data1 != data2
+  }
+ else{
+    data1 != data2   
   }
 }
 
 # if we don't want the build-in errors, we can just call the function using the try() with the argument silent = TRUE.
-try(changes_by_col(df1,df2),silent=TRUE)
+changes_by_col(df1,df2)
