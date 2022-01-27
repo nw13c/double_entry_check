@@ -42,11 +42,6 @@ changes_by_col <- function(data1, data2){
   else {
     print("The data sets have the same number of columns.")
   }
-  #if(length(names(data1))!= length(names(data2))){
-    #cat("Data1 has", paste0(length(names(data1))),"columns.",'\n')
-    #cat("Data2 has", paste0(length(names(data2))),"columns.",'\n')
-    #stop("Warning: The datasets have different columns.")
-  #}
  if (!identical(names(data1),names(data2))){
    #a <- names(data1)!= names(data2)
    #cat(paste0("The name in data1 is: " , names(data1[a]),sep="\n",
